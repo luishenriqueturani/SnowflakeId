@@ -2,13 +2,20 @@ package org.example;
 
 public class Main {
   public static void main(String[] args) {
-    SnowflakeId id = new SnowflakeId(1, 10);
-    SnowflakeId id2 = new SnowflakeId(15, 10);
+    SnowflakeId snowflake = new SnowflakeId(31, 31);
     for (int i = 0; i < 10; i++) {
-      System.out.println(id.nextId());
-      System.out.println(id2.nextId());
+      System.out.println(snowflake.nextId());
     }
-    //System.out.println(id.nextId());
+
+    long id1 = snowflake.nextId();
+
+    System.out.println(snowflake.extractTimestamp(id1));
+    System.out.println(snowflake.extractDatacenterId(id1));
+    System.out.println(snowflake.extractWorkerId(id1));
+    System.out.println(snowflake.extractSequence(id1));
+
+    System.out.println(snowflake.extractAll(id1));
+
 
   }
 }
